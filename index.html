@@ -3,48 +3,45 @@
 
 <head>
 
-  <meta name="viewport" content="device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <title>Car Rental System</title>
   <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 
 <body>
-
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-transparent pt-3">
     <div class="container">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">Car Rental System</a>
-      </div>
+      <a class="navbar-brand" href="#">Car Rental System</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="">Home</a></li>
-          <li><a href="">About</a></li>
-          <li><a href="">Contact</a></li>
-        </ul>
-
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign up <i class="fa fa-user-plus" aria-hidden="true"></i></a>
-          <li><a href="#">Log in <i class="fa fa-user" aria-hidden="true"></i></a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">
+              Home<span class="sr-only">(current)</span>
+            </a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Contact
+            </a>
+          </li>
         </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+      </div>
+    </div>
   </nav>
 
   <div class="container">
@@ -54,7 +51,7 @@
           <h1>Car Rental System</h1>
           <h3>The Only Car Rental System For You</h3>
           <hr>
-          <button class="btn btn-default btn-lg">
+          <button class="btn btn-light btn-lg">
             <i class="fas fa-car"></i> Get Started!
           </button>
         </div>
@@ -62,8 +59,8 @@
     </div>
   </div>
 
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
-  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery-3.4.0.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
