@@ -11,6 +11,7 @@ git checkout branchName
 ```
 2. After any editting, commit
 ```
+git add .
 git commit -m "your message"
 ```
 3. After commited
