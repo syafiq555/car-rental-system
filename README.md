@@ -1,8 +1,16 @@
 # car-rental-system
-clone this repository with
+1. Clone this repository with
 ```
 git clone https://github.com/syafiq555/car-rental-system.git
 ```
+
+2. Run in cmd/terminal
+```
+cd car-rental-system
+cp .env.sample .env
+```
+3. Import car-rental-system.sql 
+4. Change the newly created .env file according to your local database configuration
 
 ## Things to remind before use
 1. Create your branch first before edit (feature branch)
