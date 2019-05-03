@@ -44,13 +44,12 @@
 
     <link href="assetsinspinia/css/plugins/touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet">
 
-    <link href="css/plugins/dualListbox/bootstrap-duallistbox.min.css" rel="stylesheet">
-
     <link href="assetsinspinia/css/animate.css" rel="stylesheet">
     <link href="assetsinspinia/css/style.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    
+        
+    <link href="assetsinspinia/fonts/font-awesome/css/fontawesome-all.css" rel="stylesheet">
 
 </head>
 
@@ -81,7 +80,9 @@
                                     <li class="dropdown">
                                         <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Car List</a>
                                         <ul role="menu" class="dropdown-menu">
-                                            <li><a href="#">All Types</a></li>
+
+                                            <li><a href="allcarlist.html">All Types</a></li>
+
                                             <li><a href="#">Luxury</a></li>
                                             <li><a href="#">Exclusive</a></li>
                                             <li><a href="#">Premium</a></li>
@@ -89,16 +90,16 @@
                                         </ul>
                                     </li>
                                     <li>
-                                        <a aria-expanded="false" role="button" href="#"> Booking Status</a>
-                                        
+                                        <a aria-expanded="false" role="button" href="customerbookingstatus.html"> Booking Status</a>
                                     </li>
 
                                     <li>
-                                            <a aria-expanded="false" role="button" href="#">Manage Car</a>
+                                            <a aria-expanded="false" role="button" href="managecar.html">Manage Car</a>
                                             
                                         </li>
                                     <li>
-                                            <a aria-expanded="false" role="button" href="#"> List of Booking</a>
+                                            <a aria-expanded="false" role="button" href="approvallist.html"> List of Booking</a>
+
                                             
                                         </li>
 
@@ -107,13 +108,13 @@
                                 </ul>
                                 <ul class="nav navbar-top-links navbar-right">
                                              <li>
-                                                <a href="login.html"><i class="fas fa-sign-in-alt"></i>Log In</a>
+                                                <a href="login.html" aria-expanded="false" role="button"><i class="fas fa-sign-in-alt"></i>Log In</a>
                                             </li> 
                                             <li>
-                                                 <a href="login.html"> <i class="fa fa-address-card"></i> Sign Up</a>
+                                                 <a href="login.html" aria-expanded="false" role="button"> <i class="fa fa-address-card"></i> Sign Up</a>
                                             </li>
                                             <li>
-                                                <a href="login.html"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                                                <a href="login.html" aria-expanded="false" role="button"><i class="fas fa-sign-out-alt"></i> Log out</a>
                                             </li>
                                 </ul>
                             </div>
@@ -159,6 +160,7 @@
                                     <div class="ibox-title" style="padding-right:15px">
                                         <h5 class="font-weight-bold">When To Book</h5>
                                     </div>
+
                                     <div class="ibox-content" style="background-color: #ffffffb5 ">
                                         <div class="form-group" id="data_1">
                                             <label class="font-normal font-weight-bold">Date From</label>
@@ -194,10 +196,8 @@
                                                             <span class="fa fa-clock-o"></span>
                                                         </span>
                                                 <input type="text" class="form-control" value="09:30" >
-                                                
                                             </div>
                                             </div>
-
                                             <a href="searchcarresult.html"><button type="button" class="btn btn-w-m btn-success">GO</button></a>
 
                                         </div>
@@ -321,8 +321,6 @@
      <!-- Tags Input -->
      <script src="assetsinspinia/js/plugins/bootstrap-tagsinput/bootstrap-tagsinput.js"></script>
  
-     <!-- Dual Listbox -->
-     <script src="assetsinspinia/js/plugins/dualListbox/jquery.bootstrap-duallistbox.js"></script>
  
      <script>
          $(document).ready(function(){
