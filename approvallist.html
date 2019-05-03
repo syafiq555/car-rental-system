@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.8/dashboard_2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Oct 2018 13:00:49 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CRS | Car Rental System</title>
+
+    <link href="assetsinspinia/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assetsinspinia/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="assetsinspinia/css/plugins/iCheck/custom.css" rel="stylesheet">
+
+    <link href="assetsinspinia/css/plugins/chosen/bootstrap-chosen.css" rel="stylesheet">
+
+
+    <link href="assetsinspinia/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="assetsinspinia/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+
+    <link href="assetsinspinia/css/animate.css" rel="stylesheet">
+    <link href="assetsinspinia/css/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="assetsinspinia/fonts/font-awesome/css/fontawesome-all.css" rel="stylesheet">
+
+</head>
+
+<body class="top-navigation">
+    <div id="wrapper">
+    
+            
+
+        <div id="page-wrapper" style="background: url('img/tim-krauss-573471-unsplash.jpg');background-size: cover;background-position: center">
+           
+            <div class="row border-bottom white-bg">
+
+                        
+
+                        <nav class="navbar navbar-expand-lg navbar-static-top" role="navigation">
+                                
+                            <!--<div class="navbar-header">-->
+                                <!--<button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">-->
+                                    <!--<i class="fa fa-reorder"></i>-->
+                                <!--</button>-->
+                
+                                <a href="#" class="navbar-brand">Car Rental</a>
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-label="Toggle navigation">
+                                    <i class="fas fa-bars"></i>
+                                </button>
+                
+                            <!--</div>-->
+                            <div class="navbar-collapse collapse" id="navbar">
+                                <ul class="nav navbar-nav mr-auto">
+                                    <li>
+                                        <a aria-expanded="false" role="button" href="home.html"> Home</a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Car List</a>
+                                        <ul role="menu" class="dropdown-menu">
+                                            <li><a href="allcarlist.html">All Types</a></li>
+                                            <li><a href="#">Luxury</a></li>
+                                            <li><a href="#">Exclusive</a></li>
+                                            <li><a href="#">Premium</a></li>
+                                            <li><a href="#">Economy</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a aria-expanded="false" role="button" href="customerbookingstatus.html"> Booking Status</a>
+                                        
+                                    </li>
+
+                                    <li>
+                                            <a aria-expanded="false" role="button" href="managecar.html">Manage Car</a>
+                                            
+                                        </li>
+                                    <li>
+                                            <a aria-expanded="false" role="button" href="approvallist.html"> List of Booking</a>
+                                            
+                                        </li>
+
+                                       
+                                   
+                                </ul>
+                                <ul class="nav navbar-top-links navbar-right">
+                                             <li>
+                                                <a href="login.html"><i class="fas fa-sign-in-alt"></i>Log In</a>
+                                            </li> 
+                                            <li>
+                                                 <a href="login.html"> <i class="fa fa-address-card"></i> Sign Up</a>
+                                            </li>
+                                            <li>
+                                                <a href="login.html"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                                            </li>
+                                </ul>
+                            </div>
+                           
+                        </nav>
+
+                       
+                        </div>
+
+       
+                        <div class="row wrapper border-bottom white-bg page-heading">
+                            <div class="col-lg-10">
+                                <h2>Booking Status</h2>
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="index-2.html">Home</a>
+                                    </li>
+                                    
+                                    <li class="breadcrumb-item">
+                                        <strong>Booking Status<strong>
+                                    </li>
+                                    
+                                </ol>
+                            </div>
+                        </div>
+
+                            
+                            <div class="wrapper wrapper-content animated fadeInRight">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox ">
+                                        <div class="ibox-title">
+                                            <h5>Car Rental Approval</h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                               
+                                                
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+                                            <div class="row">
+                                                
+                                                <div class="col-sm-4 m-b-xs">
+                                                    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                                        <label class="btn btn-sm btn-white ">
+                                                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Day
+                                                        </label>
+                                                        <label class="btn btn-sm btn-white active">
+                                                            <input type="radio" name="options" id="option2" autocomplete="off"> Week
+                                                        </label>
+                                                        <label class="btn btn-sm btn-white">
+                                                            <input type="radio" name="options" id="option3" autocomplete="off"> Month
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-5"></div>
+                                                <div class="col-sm-3">
+                                                    <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm"> <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!
+                                                    </button> </span></div>
+                
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table table-striped">
+                                                    <thead>
+                                                    <tr>
+                
+                                                        <th></th>
+                                                        <th>Car </th>
+                                                        <th>Date </th>
+                                                        <th>Time</th>
+                                                        <th>Remark</th>
+                                                        <th>Approve/Reject</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><input type="checkbox"  checked class="i-checks" name="input[]"></td>
+                                                        <td>Perodua Kancil</td>
+                                                        <td><span class="pie">0.52/1.561</span></td>
+                                                        <td>20%</td>
+                                                        <td>Jul 14, 2013</td>
+                                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                        <td>Perodua Myvi</td>
+                                                        <td><span class="pie">6,9</span></td>
+                                                        <td>40%</td>
+                                                        <td>Jul 16, 2013</td>
+                                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                        <td>Perodua Myvi</td>
+                                                        <td><span class="pie">3,1</span></td>
+                                                        <td>75%</td>
+                                                        <td>Jul 18, 2013</td>
+                                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                        <td>Honda City</td>
+                                                        <td><span class="pie">4,9</span></td>
+                                                        <td>18%</td>
+                                                        <td>Jul 22, 2013</td>
+                                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                    </tr>
+                                                    <tr>
+                                                            <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                            <td>Toyota Vios</td>
+                                                            <td><span class="pie">4,9</span></td>
+                                                            <td>18%</td>
+                                                            <td>Jul 22, 2013</td>
+                                                            <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                        </tr>
+                                                        <tr>
+                                                                <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                                <td>Perodua Myvi</td>
+                                                                <td><span class="pie">4,9</span></td>
+                                                                <td>18%</td>
+                                                                <td>Jul 22, 2013</td>
+                                                                <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                            </tr>
+                                                            <tr>
+                                                                    <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                                    <td>Toyota Vios</td>
+                                                                    <td><span class="pie">4,9</span></td>
+                                                                    <td>18%</td>
+                                                                    <td>Jul 22, 2013</td>
+                                                                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                        <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                                        <td>Perodua Myvi</td>
+                                                                        <td><span class="pie">4,9</span></td>
+                                                                        <td>18%</td>
+                                                                        <td>Jul 22, 2013</td>
+                                                                        <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                            <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                                            <td>Toyota Vios</td>
+                                                                            <td><span class="pie">4,9</span></td>
+                                                                            <td>18%</td>
+                                                                            <td>Jul 22, 2013</td>
+                                                                            <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                                <td><input type="checkbox" class="i-checks" name="input[]"></td>
+                                                                                <td>Toyota Vios</td>
+                                                                                <td><span class="pie">4,9</span></td>
+                                                                                <td>18%</td>
+                                                                                <td>Jul 22, 2013</td>
+                                                                                <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i class="fas fa-times" style="color:red"></i></a></td>
+                                                                            </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                
+                                        </div>
+                                    </div>
+                                </div>
+                
+                            </div>
+
+                               </div>
+
+
+                
+                <div class="footer">
+                      
+                        <ul class="list-unstyled list-inline text-center" style="margin-bottom: 0rem;">
+                                <li class="list-inline-item">
+                             <a href="#"  class="nav-link waves-effect waves-dark"><i class="fas fa-th-list fa-2x" style="color: #000000;"></i></a>
+                  </li>
+                  <li class="list-inline-item"></li><li class="list-inline-item"></li><li class="list-inline-item"></li><li class="list-inline-item"></li>
+                               <li class="list-inline-item">
+                                    <a href="index.html"  class="nav-link waves-effect waves-dark"><i class="fas fa-home fa-2x" style="color: #000000;"></i></a>
+                                   </li>
+                                   <li class="list-inline-item"></li><li class="list-inline-item"></li><li class="list-inline-item"></li><li class="list-inline-item"></li>
+                                <li class="list-inline-item">
+                                        <a href="#"  class="nav-link waves-effect waves-dark"><i class="fas fa-power-off fa-2x" style="color: #000000;"></i></a>
+                              
+                     </li>
+                    </ul>
+                </div>
+                </div>
+                
+
+        </div>
+       
+
+
+        
+    </div>
+
+     <!-- Mainly scripts -->
+     <script src="assetsinspinia/js/jquery-3.1.1.min.js"></script>
+     <script src="assetsinspinia/js/popper.min.js"></script>
+     <script src="assetsinspinia/js/bootstrap.js"></script>
+ 
+     <!-- Custom and plugin javascript -->
+     <script src="assetsinspinia/js/inspinia.js"></script>
+     <script src="assetsinspinia/js/plugins/pace/pace.min.js"></script>
+     <script src="assetsinspinia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+ 
+     <!-- Chosen -->
+     <script src="assetsinspinia/js/plugins/chosen/chosen.jquery.js"></script>
+ 
+    <!-- JSKnob -->
+    <script src="assetsinspinia/js/plugins/jsKnob/jquery.knob.js"></script>
+ 
+
+ 
+
+ 
+    <!-- Switchery -->
+    <script src="assetsinspinia/js/plugins/switchery/switchery.js"></script>
+ 
+
+ 
+     <!-- iCheck -->
+     <script src="assetsinspinia/js/plugins/iCheck/icheck.min.js"></script>
+ 
+     <!-- MENU -->
+     <script src="assetsinspinia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+ 
+ 
+ 
+  
+ 
+ 
+   
+
+
+</body>
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.8/dashboard_2.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Oct 2018 13:00:52 GMT -->
+</html>
