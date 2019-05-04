@@ -13,8 +13,14 @@ $(document).ready(() => {
     $(button).addClass('disabled')
 
     const res = await login(username.value, password.value)
-    if (res.status === -1) return alert('User not found')
-    if (res.status === 0) return alert('Wrong password')
+    if (res.status === -1) {
+    $(button).removeClass('disabled')
+    return alert('User not found')
+    }
+    if (res.status === 0) {
+    $(button).removeClass('disabled')
+    return alert('Wrong password')
+    }
 
     return alert(`Login successful token: ${res.token}`)
   })
