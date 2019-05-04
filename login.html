@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from webapplayers.com/inspinia_admin-v2.8/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Oct 2018 13:00:49 GMT -->
+
 <head>
 
     <meta charset="utf-8">
@@ -32,12 +33,13 @@
                 <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
             <p>LogIn</p>
-            <form class="m-t" role="form" action="http://webapplayers.com/inspinia_admin-v2.8/index.html">
+            <form class="m-t" role="form" id="loginForm">
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Username" required="">
+                    <input class="form-control" name="username" id="username" placeholder="Username" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" required="">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Password"
+                        required="">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
@@ -53,9 +55,11 @@
     <script src="assetsinspinia/js/jquery-3.1.1.min.js"></script>
     <script src="assetsinspinia/js/popper.min.js"></script>
     <script src="assetsinspinia/js/bootstrap.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
 
 
 <!-- Mirrored from webapplayers.com/inspinia_admin-v2.8/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Oct 2018 13:00:49 GMT -->
+
 </html>
