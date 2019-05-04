@@ -16,6 +16,24 @@ $(function () {
   //     return "<span style='color: green; font-weight: bold'>active</span>";
   // });
 
+  const toggleNavbar = route => {
+    if ($(document.body).hasClass('body-small')) {
+      const navigation = document.querySelector('ul.nav.navbar-nav.mr-auto')
+      const lia = navigation.querySelectorAll('li a')
+      lia.forEach(link => {
+        $(link).parent().removeClass('active')
+        if ($(link).attr('href') === `#${route}`) {
+          $(link).parent().addClass('active')
+          if ($(link).parent().parent().hasClass('dropdown-menu')) {
+            $(link).parent().parent().parent().addClass('active')
+          }
+        }
+        if (!$(link).hasClass('dropdown-toggle'))
+          $(link).click(() => document.querySelector('nav button.navbar-toggler').click())
+      })
+    }
+  }
+
   crossroads.addRoute('/home', function () {
     var homeTemplate = Handlebars.templates['home'];
 
