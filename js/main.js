@@ -16,6 +16,24 @@ $(function () {
   //     return "<span style='color: green; font-weight: bold'>active</span>";
   // });
 
+  const toggleNavbar = route => {
+    if ($(document.body).hasClass('body-small')) {
+      const navigation = document.querySelector('ul.nav.navbar-nav.mr-auto')
+      const lia = navigation.querySelectorAll('li a')
+      lia.forEach(link => {
+        $(link).parent().removeClass('active')
+        if ($(link).attr('href') === `#${route}`) {
+          $(link).parent().addClass('active')
+          if ($(link).parent().parent().hasClass('dropdown-menu')) {
+            $(link).parent().parent().parent().addClass('active')
+          }
+        }
+        if (!$(link).hasClass('dropdown-toggle'))
+          $(link).click(() => document.querySelector('nav button.navbar-toggler').click())
+      })
+    }
+  }
+
   crossroads.addRoute('/home', function () {
     var homeTemplate = Handlebars.templates['home'];
 
@@ -24,6 +42,8 @@ $(function () {
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+    const route = 'home'
+    toggleNavbar(route)
   });
 
   crossroads.addRoute('/search_car_result', function () {
@@ -33,6 +53,8 @@ $(function () {
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+    const route = 'search_car_result'
+    toggleNavbar(route)
   });
 
   crossroads.addRoute('/manage_car', function () {
@@ -42,6 +64,8 @@ $(function () {
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+    const route = 'manage_car'
+    toggleNavbar(route)
   });
 
   crossroads.addRoute('/approval_list', function () {
@@ -51,6 +75,8 @@ $(function () {
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+    const route = 'approval_list'
+    toggleNavbar(route)
   });
 
   crossroads.addRoute('/all_car_list', function () {
@@ -60,6 +86,8 @@ $(function () {
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+    const route = 'all_car_list'
+    toggleNavbar(route)
   });
 
   crossroads.addRoute('/customer_booking_status', function () {
@@ -69,6 +97,8 @@ $(function () {
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+    const route = 'customer_booking_status'
+    toggleNavbar(route)
   });
 
   hasher.initialized.add(parseHash); //parse initial hash
