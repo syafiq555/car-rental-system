@@ -58,7 +58,10 @@ $(document).ready(() => {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({
+        username: username.trim().toLowerCase(),
+        password
+      })
     })
 
     const valid = await res.json()
