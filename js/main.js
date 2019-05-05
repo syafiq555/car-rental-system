@@ -1,3 +1,8 @@
+function logout() {
+  sessionStorage.clear()
+  window.location.reload()
+}
+
 $(function () {
   if (sessionStorage.getItem('role') !== 'admin')
     $('.admin').hide()
