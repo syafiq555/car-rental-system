@@ -14,15 +14,17 @@ $(document).ready(() => {
 
     const res = await login(username.value, password.value)
     if (res.status === -1) {
-    $(button).removeClass('disabled')
-    return alert('User not found')
+      $(button).removeClass('disabled')
+      return alert('User not found')
     }
     if (res.status === 0) {
-    $(button).removeClass('disabled')
-    return alert('Wrong password')
+      $(button).removeClass('disabled')
+      return alert('Wrong password')
     }
 
-    return alert(`Login successful token: ${res.token}`)
+    sessionStorage.role = res.role
+    sessionStorage.token = res.token
+    window.location.href = "home.html#home"
   })
 
   const validateForm = (username, password) => {
