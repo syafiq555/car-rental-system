@@ -18,16 +18,26 @@ $(document).ready(() => {
     const res = await login(username.value, password.value)
     if (res.status === -1) {
       $(button).removeClass('disabled')
-      return alert('User not found')
+      return Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'User not found!'
+      })
     }
     if (res.status === 0) {
       $(button).removeClass('disabled')
-      return alert('Wrong password')
+      return Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Wrong password!'
+      })
     }
 
     sessionStorage.role = res.role
     sessionStorage.token = res.token
-    window.location.href = "home.html#home"
+    Swal.fire('Login Successful', `Welcome back, ${username}`, 'success')
+    setTimeout(() => window.location.href = "home.html#home", 2000)
+
   })
 
   const validateForm = (username, password) => {
