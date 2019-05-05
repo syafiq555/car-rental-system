@@ -4,6 +4,7 @@ function logout() {
 }
 
 $(function () {
+  const api_url = 'https://car-rental-system-api.herokuapp.com'
   if (sessionStorage.getItem('role') !== 'admin')
     $('.admin').hide()
   if (sessionStorage.token) {
