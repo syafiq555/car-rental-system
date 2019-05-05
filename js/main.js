@@ -94,10 +94,15 @@ $(function () {
     toggleNavbar(route)
   });
 
-  crossroads.addRoute('/all_car_list', function () {
+  crossroads.addRoute('/all_car_list', async function () {
     var allCarList = Handlebars.templates['allCarList'];
+    const res = await fetch(`${api_url}/get_all_cars`)
+    const cars = await res.json()
 
-    var htmlTemplate = allCarList();
+    const context = {
+      cars
+    }
+    var htmlTemplate = allCarList(context);
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
