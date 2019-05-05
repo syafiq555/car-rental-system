@@ -1,4 +1,13 @@
 $(function () {
+  if (sessionStorage.getItem('role') !== 'admin')
+    $('.admin').hide()
+  if (sessionStorage.token) {
+    $('.unauthorized').hide()
+    $('.authorized').show()
+  } else {
+    $('.unauthorized').show()
+    $('.authorized').hide()
+  }
 
   function parseHash(newHash, oldHash) {
     crossroads.parse(newHash);
