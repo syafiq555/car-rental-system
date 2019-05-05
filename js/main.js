@@ -94,6 +94,17 @@ $(function () {
     toggleNavbar(route)
   });
 
+  crossroads.addRoute('/add_model', function () {
+    var addModel = Handlebars.templates['addmodel'];
+
+    var htmlTemplate = addModel();
+
+    $("div#contents").empty();
+    $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+    const route = 'add_model'
+    toggleNavbar(route)
+  });
+
   crossroads.addRoute('/approval_list', function () {
     var approvalList = Handlebars.templates['approvalList'];
 
