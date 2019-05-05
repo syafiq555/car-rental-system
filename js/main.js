@@ -97,6 +97,7 @@ $(function () {
   crossroads.addRoute('/add_model', function () {
     var addModel = Handlebars.templates['addmodel'];
 
+
     var htmlTemplate = addModel();
 
     $("div#contents").empty();
