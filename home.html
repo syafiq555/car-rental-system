@@ -64,7 +64,7 @@
                     </button>
                     <div class="navbar-collapse collapse" id="navbar">
                         <ul class="nav navbar-nav mr-auto">
-                            <li class="active">
+                            <li>
                                 <a aria-expanded="false" role="button" href="#home"> Home</a>
                             </li>
                             <li class="dropdown">
@@ -78,29 +78,32 @@
                                     <li><a href="#">Economy</a></li> -->
                                 </ul>
                             </li>
-                            <li>
+                            <li class="admin">
                                 <a aria-expanded="false" role="button" href="#customer_booking_status"> Booking
                                     Status</a>
                             </li>
-                            <li>
+                            <li class="admin">
                                 <a aria-expanded="false" role="button" href="#manage_car">Manage Car</a>
                             </li>
-                            <li>
+                            <li class="admin">
                                 <a aria-expanded="false" role="button" href="#approval_list"> List of
                                     Booking</a>
                             </li>
                         </ul>
                         <ul class="nav navbar-top-links navbar-right">
-                            <li>
+                            <li class="unauthorized">
                                 <a href="login.html" aria-expanded="false" role="button"><i
                                         class="fas fa-sign-in-alt"></i>Log In</a>
                             </li>
-                            <li>
+                            <li class="unauthorized">
                                 <a href="register.html" aria-expanded="false" role="button"> <i
                                         class="fa fa-address-card"></i> Sign Up</a>
                             </li>
-                            <li>
-                                <a aria-expanded="false" role="button"><i class="fas fa-sign-out-alt"></i> Log out</a>
+                            <li class="authorized">
+                                <a aria-expanded="false" role="button" onclick="logout()">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Log out
+                                </a>
                             </li>
                         </ul>
                     </div>

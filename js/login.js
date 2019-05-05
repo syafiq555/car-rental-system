@@ -1,4 +1,7 @@
 $(document).ready(() => {
+  if (sessionStorage.token) {
+    window.location.href = 'home.html#home'
+  }
   const api_url = 'https://car-rental-system-api.herokuapp.com'
 
   $('form#loginForm').submit(async event => {
@@ -14,15 +17,27 @@ $(document).ready(() => {
 
     const res = await login(username.value, password.value)
     if (res.status === -1) {
-    $(button).removeClass('disabled')
-    return alert('User not found')
+      $(button).removeClass('disabled')
+      return Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'User not found!'
+      })
     }
     if (res.status === 0) {
-    $(button).removeClass('disabled')
-    return alert('Wrong password')
+      $(button).removeClass('disabled')
+      return Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'Wrong password!'
+      })
     }
 
-    return alert(`Login successful token: ${res.token}`)
+    sessionStorage.role = res.role
+    sessionStorage.token = res.token
+    Swal.fire('Login Successful', `Welcome back, ${username}`, 'success')
+    setTimeout(() => window.location.href = "home.html#home", 2000)
+
   })
 
   const validateForm = (username, password) => {
