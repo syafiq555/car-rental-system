@@ -1,4 +1,7 @@
 $(document).ready(() => {
+  if (sessionStorage.token) {
+    window.location.href = 'home.html#home'
+  }
   const api_url = 'https://car-rental-system-api.herokuapp.com'
 
   $('form#loginForm').submit(async event => {
