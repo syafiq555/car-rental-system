@@ -83,6 +83,17 @@ $(function () {
     toggleNavbar(route)
   });
 
+  crossroads.addRoute('/add_manufacture', function () {
+    var addManufacture = Handlebars.templates['addmanufacture'];
+
+    var htmlTemplate = addManufacture();
+
+    $("div#contents").empty();
+    $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+    const route = 'add_manufacture'
+    toggleNavbar(route)
+  });
+
   crossroads.addRoute('/approval_list', function () {
     var approvalList = Handlebars.templates['approvalList'];
 
