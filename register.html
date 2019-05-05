@@ -16,7 +16,7 @@
 
     <link href="assetsinspinia/css/animate.css" rel="stylesheet">
     <link href="assetsinspinia/css/style.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="node_modules/sweetalert2/dist/sweetalert2.min.css">
 </head>
 
 <body class="gray-bg">
@@ -33,38 +33,39 @@
                 <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
             <p>Register</p>
-            <form class="m-t" role="form" id="loginForm">
+            <form class="m-t" role="form" id="registerForm">
 
                 <!-- First Name-->
                 <div class="form-group">
-                    <input class="form-control" name="firstname" id="firstname" placeholder="First Name" required="">
+                    <input class="form-control" name="first_name" id="firstname" placeholder="First Name" required="">
                 </div>
-                
+
                 <!-- Last Name-->
                 <div class="form-group">
-                    <input class="form-control" name="lastname" id="lastname" placeholder="Last Name" required="">
+                    <input class="form-control" name="last_name" id="lastname" placeholder="Last Name" required="">
                 </div>
 
                 <!-- Email-->
                 <div class="form-group">
-                    <input class="form-control" name="email" id="email" placeholder="Email" required="">
+                    <input class="form-control" name="email" id="email" placeholder="Email" required="" type="email">
                 </div>
 
                 <!-- IC Number-->
                 <div class="form-group">
-                    <input class="form-control" name="icnumber" id="icnumber" placeholder="IC Number" required="">
+                    <input class="form-control" name="ic_number" id="icnumber" placeholder="IC Number" required="">
                 </div>
 
                 <!-- Mobile Number-->
                 <div class="form-group">
-                    <input class="form-control" name="mobilenumber" id="mobilenumber" placeholder="Mobile Number" required="">
+                    <input class="form-control" name="mobile_phone" id="mobilenumber" placeholder="Mobile Number"
+                        required="">
                 </div>
 
-                <!-- Username-->                   
+                <!-- Username-->
                 <div class="form-group">
                     <input class="form-control" name="username" id="username" placeholder="Username" required="">
                 </div>
-                
+
                 <!-- Password-->
                 <div class="form-group">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password"
@@ -73,28 +74,24 @@
 
                 <!-- Repeat Password-->
                 <div class="form-group">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Repeat Password"
-                        required="">
-                </div>
-                
-               
-                <div class="form-group">
-                <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
+                    <input type="password" name="repeatPassword" id="repeatPassword" class="form-control"
+                        placeholder="Repeat Password" required="">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
 
                 <p class="text-muted text-center"><small>Already have an account?</small></p>
                 <a class="btn btn-sm btn-white btn-block" href="login.html">Login</a>
-                </form>
-                <p class="m-t"> <small>Car Rental System &copy; 2019</small> </p>
-                </div>
-                </div>
+            </form>
+            <p class="m-t"> <small>Car Rental System &copy; 2019</small> </p>
+        </div>
+    </div>
 
     <!-- Mainly scripts -->
     <script src="assetsinspinia/js/jquery-3.1.1.min.js"></script>
+    <script src="node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="assetsinspinia/js/popper.min.js"></script>
     <script src="assetsinspinia/js/bootstrap.js"></script>
-    <script src="js/login.js"></script>
+    <script src="js/register.js"></script>
 
 </body>
 
