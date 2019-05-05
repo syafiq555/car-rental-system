@@ -41,7 +41,7 @@ $(document).ready(() => {
   })
 
   const validateForm = (username, password) => {
-    if (username.length < 5 || password.length < 6) {
+    if (username.length < 4 || password.length < 6) {
       return {
         msg: 'username length must be bigger than 4 and password length must be bigger than 5',
         valid: false
@@ -58,7 +58,10 @@ $(document).ready(() => {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({
+        username: username.trim().toLowerCase(),
+        password
+      })
     })
 
     const valid = await res.json()
