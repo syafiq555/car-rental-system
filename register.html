@@ -34,58 +34,61 @@
             </p>
             <p>Register</p>
             <form class="m-t" role="form" id="loginForm">
-                    <div class="form-group">
-                            <input class="form-control" name="firstname" id="firstname" placeholder="First Name" required="">
-                        </div>
 
-                        <div class="form-group">
-                                <input class="form-control" name="lastname" id="lastname" placeholder="Last Name" required="">
-                            </div>
+                <!-- First Name-->
+                <div class="form-group">
+                    <input class="form-control" name="firstname" id="firstname" placeholder="First Name" required="">
+                </div>
+                
+                <!-- Last Name-->
+                <div class="form-group">
+                    <input class="form-control" name="lastname" id="lastname" placeholder="Last Name" required="">
+                </div>
 
-                            <div class="form-group">
-                                    <input class="form-control" name="email" id="email" placeholder="Email" required="">
-                                </div>
+                <!-- Email-->
+                <div class="form-group">
+                    <input class="form-control" name="email" id="email" placeholder="Email" required="">
+                </div>
 
-                                <div class="form-group">
-                                        <input class="form-control" name="icnumber" id="icnumber" placeholder="IC Number" required="">
-                                    </div>
+                <!-- IC Number-->
+                <div class="form-group">
+                    <input class="form-control" name="icnumber" id="icnumber" placeholder="IC Number" required="">
+                </div>
 
-                                    <div class="form-group">
-                                            <input class="form-control" name="mobilenumber" id="mobilenumber" placeholder="Mobile Number" required="">
-                                        </div>
+                <!-- Mobile Number-->
+                <div class="form-group">
+                    <input class="form-control" name="mobilenumber" id="mobilenumber" placeholder="Mobile Number" required="">
+                </div>
 
-                                        <div class="form-group row">
-                                            <div class="col-sm-10"><select class="form-control m-b" name="account">
-                                                <option> -- Role --</option>
-                                                <option>Honda</option>
-                                                <option>Perodua</option>
-                                                <option>Toyota</option>
-                                                <option>BMW</option>
-                                              </select>
-                                            </div>
-                                          </div>
-
+                <!-- Username-->                   
                 <div class="form-group">
                     <input class="form-control" name="username" id="username" placeholder="Username" required="">
                 </div>
                 
+                <!-- Password-->
                 <div class="form-group">
                     <input type="password" name="password" id="password" class="form-control" placeholder="Password"
                         required="">
                 </div>
-                
 
+                <!-- Repeat Password-->
                 <div class="form-group">
-                    <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
-            </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Repeat Password"
+                        required="">
+                </div>
+                
+               
+                <div class="form-group">
+                <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Register</button>
 
-            <p class="text-muted text-center"><small>Already have an account?</small></p>
-            <a class="btn btn-sm btn-white btn-block" href="login.html">Login</a>
-            </form>
-            <p class="m-t"> <small>Car Rental System &copy; 2019</small> </p>
-        </div>
-    </div>
+                <p class="text-muted text-center"><small>Already have an account?</small></p>
+                <a class="btn btn-sm btn-white btn-block" href="login.html">Login</a>
+                </form>
+                <p class="m-t"> <small>Car Rental System &copy; 2019</small> </p>
+                </div>
+                </div>
 
     <!-- Mainly scripts -->
     <script src="assetsinspinia/js/jquery-3.1.1.min.js"></script>
