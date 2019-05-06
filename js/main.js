@@ -5,8 +5,6 @@ function logout() {
 
 $(function () {
   const api_url = 'https://car-rental-system-api.herokuapp.com'
-  if (sessionStorage.getItem('role') !== 'admin')
-    $('.admin').hide()
   if (sessionStorage.token) {
     $('.unauthorized').hide()
     $('.authorized').show()
@@ -14,6 +12,10 @@ $(function () {
     $('.unauthorized').show()
     $('.authorized').hide()
   }
+  if (sessionStorage.getItem('role') !== 'admin')
+    $('.admin').hide()
+  else
+    $('.no_admin').hide()
 
   function parseHash(newHash, oldHash) {
     crossroads.parse(newHash);
