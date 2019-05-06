@@ -14,14 +14,17 @@
 <div class="wrapper wrapper-content animated fadeInRight" style="padding-top:30px;padding-bottom:100px">
 
   <div class="row">
-     <div class="col-lg-12">
-       <div class="ibox ">
-          
-        <a href="home.html#manage_Car"><button type="button" class="btn btn-w-m btn-success"><i class="fas fa-plus"></i> New Car</button></a>
-    <a href="home.html#add_manufacture"><button type="button" class="btn btn-w-m btn-default"><i class="fas fa-plus"></i> Manufacture</button></a>
-    <a href="home.html#add_model"><button type="button" class="btn btn-w-m btn-default"><i class="fas fa-plus"></i> Model</button></a>
-   
-    </div>
+    <div class="col-lg-12">
+      <div class="ibox ">
+
+        <a href="home.html#manage_Car"><button type="button" class="btn btn-w-m btn-success"><i class="fas fa-plus"></i>
+            New Car</button></a>
+        <a href="home.html#add_manufacture"><button type="button" class="btn btn-w-m btn-default"><i
+              class="fas fa-plus"></i> Manufacture</button></a>
+        <a href="home.html#add_model"><button type="button" class="btn btn-w-m btn-default"><i class="fas fa-plus"></i>
+            Model</button></a>
+
+      </div>
     </div>
   </div>
 
@@ -30,43 +33,50 @@
       <div class="ibox ">
         <div class="ibox-title">
           <h5>Add New Rental Car </h5>
-          
+
         </div>
         <div class="ibox-content">
-          <form method="get">
+          <form method="post" id="manageCarForm">
             <!--Model -->
-            <div class="form-group row"><label class="col-sm-2 col-form-label">Model</label>
-              <div class="col-sm-10"><select class="form-control m-b" name="account">
-                  <option> -- Please select your car model --</option>
-                  <option>Honda</option>
-                  <option>Perodua</option>
-                  <option>Toyota</option>
-                  <option>BMW</option>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Model</label>
+              <div class="col-sm-10">
+                <select class="form-control m-b" name="model_id">
+                  <option value=''> -- Please select your car model --</option>
+                  {{#each models}}
+                  <option value='{{id}}'>{{model_name}}</option>
+                  {{/each}}
                 </select>
               </div>
             </div>
             <!--Year -->
             <div class="hr-line-dashed"></div>
             <div class="form-group row"><label class="col-sm-2 col-form-label">Year</label>
-              <div class="col-sm-10"><input type="text" class="form-control">
+              <div class="col-sm-10">
+                <input type="text" name="year" placeholder="eg: 2019" class="form-control" required=''>
               </div>
             </div>
             <!--Price per Hour -->
             <div class="hr-line-dashed"></div>
-            <div class="form-group row"><label class="col-sm-2 col-form-label">Price per Hour</label>
-              <div class="col-sm-10"><input type="password" class="form-control" name="password"></div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Price per Hour (RM)</label>
+              <div class="col-sm-10">
+                <input type="text" placeholder="eg: 100" class="form-control" name="price_per_hour" required=''>
+              </div>
             </div>
             <!--Plate Number -->
             <div class="hr-line-dashed"></div>
-            <div class="form-group row"><label class="col-sm-2 col-form-label">Plate Number</label>
-              <div class="col-sm-10"><input type="text" placeholder="placeholder" class="form-control"></div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Plate Number</label>
+              <div class="col-sm-10">
+                <input type="text" name="plate_number" placeholder="eg: wjy1000" class="form-control" required=''>
+              </div>
             </div>
-            
+
             <div class="hr-line-dashed"></div>
             <div class="form-group row">
               <div class="col-sm-4 col-sm-offset-2">
-                <button class="btn btn-white btn-sm" type="submit">Cancel</button>
-                <button class="btn btn-primary btn-sm" type="submit">Add Car</button>
+                <button class="btn btn-w-m btn-primary" type="submit">Add Car</button>
               </div>
             </div>
 
@@ -74,126 +84,126 @@
         </div>
       </div>
     </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="ibox ">
-          <div class="ibox-title">
-            <h5>Car Rental List</h5>
-            <div class="ibox-tools">
-              <a class="collapse-link">
-                <i class="fa fa-chevron-up"></i>
-              </a>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <h5>Car Rental List</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="row">
+            <div class="col-sm-9"></div>
+            <div class="col-sm-3">
+              <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm">
+                <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!
+                  </button> </span></div>
             </div>
           </div>
-          <div class="ibox-content">
-            <div class="row">
-              <div class="col-sm-9"></div>
-              <div class="col-sm-3">
-                <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm">
-                  <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!
-                    </button> </span></div>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Car </th>
-                    <th>Model </th>
-                    <th>Manufactures</th>
-                    <th>Year</th>
-                    <th>Price per Hour</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Perodua Kancil</td>
-                    <td><span class="pie">0.52/1.561</span></td>
-                    <td>20%</td>
-                    <td>Jul 14, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Perodua Myvi</td>
-                    <td><span class="pie">6,9</span></td>
-                    <td>40%</td>
-                    <td>Jul 16, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Perodua Myvi</td>
-                    <td><span class="pie">3,1</span></td>
-                    <td>75%</td>
-                    <td>Jul 18, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Honda City</td>
-                    <td><span class="pie">4,9</span></td>
-                    <td>18%</td>
-                    <td>Jul 22, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Car </th>
+                  <th>Model </th>
+                  <th>Manufactures</th>
+                  <th>Year</th>
+                  <th>Price per Hour</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Perodua Kancil</td>
+                  <td><span class="pie">0.52/1.561</span></td>
+                  <td>20%</td>
+                  <td>Jul 14, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Perodua Myvi</td>
+                  <td><span class="pie">6,9</span></td>
+                  <td>40%</td>
+                  <td>Jul 16, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Perodua Myvi</td>
+                  <td><span class="pie">3,1</span></td>
+                  <td>75%</td>
+                  <td>Jul 18, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Honda City</td>
+                  <td><span class="pie">4,9</span></td>
+                  <td>18%</td>
+                  <td>Jul 22, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
 
-                    <td>Toyota Vios</td>
-                    <td><span class="pie">4,9</span></td>
-                    <td>18%</td>
-                    <td>Jul 22, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Perodua Myvi</td>
-                    <td><span class="pie">4,9</span></td>
-                    <td>18%</td>
-                    <td>Jul 22, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Toyota Vios</td>
-                    <td><span class="pie">4,9</span></td>
-                    <td>18%</td>
-                    <td>Jul 22, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Perodua Myvi</td>
-                    <td><span class="pie">4,9</span></td>
-                    <td>18%</td>
-                    <td>Jul 22, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Toyota Vios</td>
-                    <td><span class="pie">4,9</span></td>
-                    <td>18%</td>
-                    <td>Jul 22, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                  <tr>
-                    <td>Toyota Vios</td>
-                    <td><span class="pie">4,9</span></td>
-                    <td>18%</td>
-                    <td>Jul 22, 2013</td>
-                    <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
-                          class="fas fa-times" style="color:red"></i></a></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                  <td>Toyota Vios</td>
+                  <td><span class="pie">4,9</span></td>
+                  <td>18%</td>
+                  <td>Jul 22, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Perodua Myvi</td>
+                  <td><span class="pie">4,9</span></td>
+                  <td>18%</td>
+                  <td>Jul 22, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Toyota Vios</td>
+                  <td><span class="pie">4,9</span></td>
+                  <td>18%</td>
+                  <td>Jul 22, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Perodua Myvi</td>
+                  <td><span class="pie">4,9</span></td>
+                  <td>18%</td>
+                  <td>Jul 22, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Toyota Vios</td>
+                  <td><span class="pie">4,9</span></td>
+                  <td>18%</td>
+                  <td>Jul 22, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+                <tr>
+                  <td>Toyota Vios</td>
+                  <td><span class="pie">4,9</span></td>
+                  <td>18%</td>
+                  <td>Jul 22, 2013</td>
+                  <td><a href="#"><i class="fa fa-check text-navy"></i></a>&nbsp&nbsp&nbsp<a href="#"><i
+                        class="fas fa-times" style="color:red"></i></a></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  
+  </div>
+
 </div>

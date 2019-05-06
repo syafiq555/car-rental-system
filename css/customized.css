@@ -1,0 +1,5 @@
+@media only screen and (max-device-width: 480px) {
+  div#content h1 {
+    font-size: 2.8em;
+  }
+}
