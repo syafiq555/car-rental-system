@@ -72,16 +72,58 @@ $(function () {
     toggleNavbar(route)
   });
 
-  crossroads.addRoute('/manage_car', function () {
+  crossroads.addRoute('/manage_car', async function () {
+    if (!sessionStorage.token) {
+      Swal.fire('Ooupss..', 'You don\'t have permission to view this action, please re-login as admin', 'error')
+      setTimeout(() => window.location.href = 'login.html', 2000)
+    }
     var manageCar = Handlebars.templates['manageCar'];
+    const res = await fetch(`${api_url}/get_all_models`, {
+      headers: {
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`
+      }
+    })
 
-    var htmlTemplate = manageCar();
+    const models = await res.json()
+    const context = {
+      models
+    }
+
+    var htmlTemplate = manageCar(context);
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
     const route = 'manage_car'
     toggleNavbar(route)
+    const form = $('form#manageCarForm')
+    form.submit(async e => {
+      e.preventDefault()
+      const createCarRes = await submitCar(e.target.elements)
+      if (!createCarRes.status)
+        return Swal.fire('Ouupss..', createCarRes.error, 'error')
+      Swal.fire('Insertion Successful', 'Car successfully inserted in database', 'success')
+      setTimeout(() => window.location.href = 'home.html#all_car_list', 1000)
+    })
   });
+
+  const submitCar = async car => {
+    const { year, plate_number, price_per_hour, model_id } = car
+    const res = await fetch(`${api_url}/create_car`, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({
+        year: year.value.trim(),
+        plate_number: plate_number.value.trim().toLowerCase(),
+        price_per_hour: price_per_hour.value.trim(),
+        model_id: model_id.value.trim(),
+      })
+    })
+    return await res.json()
+  }
 
   crossroads.addRoute('/add_manufacture', function () {
     var addManufacture = Handlebars.templates['addmanufacture'];
