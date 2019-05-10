@@ -17,14 +17,28 @@
 <div class="wrapper wrapper-content animated fadeInRight" style="padding-top:30px;padding-bottom:100px">
 
   <div class="row">
-     <div class="col-lg-12">
-       <div class="ibox ">
-          
-        <a href="home.html#manage_Car"><button type="button" class="btn btn-w-m btn-default"><i class="fas fa-plus"></i> New Car</button></a>
-    <a href="home.html#add_manufacture"><button type="button" class="btn btn-w-m btn-default"><i class="fas fa-plus"></i> Manufacture</button></a>
-    <a href="home.html#add_model"><button type="button" class="btn btn-w-m btn-success"><i class="fas fa-plus"></i> Model</button></a>
-   
-    </div>
+    <div class="col-lg-12">
+      <div class="ibox ">
+
+        <a href="home.html#manage_Car">
+          <button type="button" class="btn btn-w-m btn-default">
+            <i class="fas fa-plus"></i>
+            New Car
+          </button>
+        </a>
+        <a href="home.html#add_manufacture">
+          <button type="button" class="btn btn-w-m btn-default">
+            <i class="fas fa-plus"></i> Manufacture
+          </button>
+        </a>
+        <a href="home.html#add_model">
+          <button type="button" class="btn btn-w-m btn-success">
+            <i class="fas fa-plus"></i>
+            Model
+          </button>
+        </a>
+
+      </div>
     </div>
   </div>
 
@@ -33,34 +47,36 @@
       <div class="ibox ">
         <div class="ibox-title">
           <h5>Add Car Model </h5>
-          
+
         </div>
         <div class="ibox-content">
-          <form method="get">
-            
+          <form method="post" id="createModelForm">
+
             <!--Model -->
             <div class="hr-line-dashed"></div>
             <div class="form-group row"><label class="col-sm-2 col-form-label">Model</label>
-              <div class="col-sm-10"><input type="text" class="form-control">
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="model_name" placeholder="eg: Perodua">
               </div>
             </div>
 
-             <!--Manufactures -->
-            <div class="form-group row"><label class="col-sm-2 col-form-label">Manufacture</label>
-              <div class="col-sm-10"><select class="form-control m-b" name="account">
+            <!--Manufactures -->
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Manufacturer</label>
+              <div class="col-sm-10">
+                <select class="form-control m-b" name="manufacturer_id">
                   <option> -- Please select your car manufacture --</option>
-                  <option>Honda</option>
-                  <option>Perodua</option>
-                  <option>Toyota</option>
-                  <option>BMW</option>
+                  {{#each manufacturers}}
+                  <option class="text-capitalize" value="{{id}}">{{manufacturer_name}}</option>
+                  {{/each}}
                 </select>
               </div>
             </div>
-           
+
             <div class="hr-line-dashed"></div>
             <div class="form-group row">
               <div class="col-sm-4 col-sm-offset-2">
-                <button class="btn btn-white btn-sm" type="submit">Cancel</button>
+                <button class="btn btn-white btn-sm" id="cancel">Cancel</button>
                 <button class="btn btn-primary btn-sm" type="submit">Add Model</button>
               </div>
             </div>
@@ -69,95 +85,43 @@
         </div>
       </div>
     </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="ibox ">
-          <div class="ibox-title">
-            <h5>Car Model List</h5>
-            <div class="ibox-tools">
-              <a class="collapse-link">
-                <i class="fa fa-chevron-up"></i>
-              </a>
-            </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <h5>Car Model List</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
           </div>
-          <div class="ibox-content">
-            <div class="row">
-              <div class="col-sm-9"></div>
-              <div class="col-sm-3">
-                <div class="input-group"><input placeholder="Search" type="text" class="form-control form-control-sm">
-                  <span class="input-group-append"> <button type="button" class="btn btn-sm btn-primary">Go!
-                    </button> </span></div>
-              </div>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Model ID</th>
-                    <th>Model Name </th>
-                    <th>Manufacture </th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Audi</td>
-                    <td><span class="pie">0.52/1.561</span></td>
-                    <td>Audi</td>
-                  </tr>
-                  <tr>
-                    <td>Honda</td>
-                    <td><span class="pie">6,9</span></td>
-                    <td>Audi</td>
-                  </tr>
-                  <tr>
-                    <td>Toyota</td>
-                    <td><span class="pie">3,1</span></td>
-                    <td>Audi</td> 
-                  </tr>
-                  <tr>
-                    <td>BMW</td>
-                    <td><span class="pie">4,9</span></td>
-                     <td>Audi</td>
-                  </tr>
-                  <tr>
+        </div>
+        <div class="ibox-content">
+          <div class="table-responsive">
+            <table class="table table-striped" id="modelTable">
+              <thead>
+                <tr>
+                  <th>Model ID</th>
+                  <th>Model Name </th>
+                  <th>Manufacture ID</th>
 
-                    <td>Perodua</td>
-                    <td><span class="pie">4,9</span></td>
-                 <td>Audi</td>
-                  </tr>
-                  <tr>
-                    <td>Proton</td>
-                    <td><span class="pie">4,9</span></td>
-                      <td>Audi</td>
-                  </tr>
-                  <tr>
-                    <td>Rolls-Royce</td>
-                    <td><span class="pie">4,9</span></td>
-                  <td>Audi</td>
-                  </tr>
-                  <tr>
-                    <td>Mercedes</td>
-                    <td><span class="pie">4,9</span></td>
-                     <td>Audi</td>
-                  </tr>
-                  <tr>
-                    <td>Mazda</td>
-                    <td><span class="pie">4,9</span></td>
-                     <td>Audi</td>
-                  </tr>
-                  <tr>
-                    <td>Mitsubishi</td>
-                    <td><span class="pie">4,9</span></td>
-                    <td>Audi</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each models}}
+                <tr>
+                  <td>{{id}}</td>
+                  <td><span class="pie text-capitalize">{{model_name}}</span></td>
+                  <td>{{manufacturer_id}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
-  
+  </div>
+
 </div>

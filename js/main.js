@@ -127,27 +127,122 @@ $(function () {
     return await res.json()
   }
 
-  crossroads.addRoute('/add_manufacture', function () {
+  crossroads.addRoute('/add_manufacture', async function () {
     var addManufacture = Handlebars.templates['addmanufacture'];
 
-    var htmlTemplate = addManufacture();
+    const manufacturers = await fetchManufacturers()
+
+    const context = {
+      manufacturers
+    }
+    var htmlTemplate = addManufacture(context);
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
     const route = 'add_manufacture'
     toggleNavbar(route)
+    addClassToDatatable('modelTable')
+
+    $('form#manufacturerForm').submit(async e => {
+      e.preventDefault()
+      const { manufacturer_name } = e.target.elements
+      const submittedManufacturer = await submitManufacturer(manufacturer_name)
+      console.log(submittedManufacturer)
+      if (!submittedManufacturer.status)
+        return Swal.fire('Oouupss...', submittedManufacturer.error, 'error')
+      Swal.fire('Insertion Successful', 'success')
+      if (submittedManufacturer) {
+        window.location.href = 'home.html#manage_car'
+      }
+    })
   });
 
-  crossroads.addRoute('/add_model', function () {
+  const submitManufacturer = async manufacturer_name => {
+    const submittedManufacturer = await fetch(`${api_url}/create_manufacturer`, {
+      headers: {
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'post',
+      body: JSON.stringify({
+        manufacturer_name: manufacturer_name.value.trim().toLowerCase()
+      })
+    })
+
+    return await submittedManufacturer.json()
+  }
+
+  const fetchManufacturers = async () => {
+    const res = await fetch(`${api_url}/get_all_manufacturers`, {
+      headers: {
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`
+      }
+    })
+
+    return await res.json()
+  }
+
+  const addClassToDatatable = name => {
+    $(`table#${name}`).dataTable()
+    $(`#${name}_filter`).addClass('form-inline')
+    $(`div#${name}_length`).addClass('form-inline')
+    $(`select[name=${name}_length]`).addClass('form-control mx-2')
+    $(`#${name}_filter label input`).addClass('form-control form-control-sm').attr('placeholder', 'Model name or id')
+  }
+
+  crossroads.addRoute('/add_model', async function () {
     var addModel = Handlebars.templates['addmodel'];
 
+    const modelRes = await fetch(`${api_url}/get_all_models`, {
+      headers: {
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
 
-    var htmlTemplate = addModel();
+    const manufacturerRes = await fetch(`${api_url}/get_all_manufacturers`, {
+      headers: {
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`,
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    })
+    const [models, manufacturers] = await Promise.all([modelRes.json(), manufacturerRes.json()])
+
+    const context = {
+      models, manufacturers
+    }
+
+    var htmlTemplate = addModel(context);
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
     const route = 'add_model'
     toggleNavbar(route)
+    addClassToDatatable('modelTable')
+    const form = document.forms.createModelForm
+    $('button#cancel').click(e => {
+      form.reset()
+      e.preventDefault()
+    })
+
+    $(form).submit(async e => {
+      e.preventDefault()
+      console.log($(form).serialize())
+      const res = await fetch(`${api_url}/create_model`, {
+        method: 'post',
+        headers: {
+          'Authorization': `bearer ${sessionStorage.getItem('token')}`,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: $(form).serialize()
+      })
+      const submitted = await res.json()
+      console.log(submitted)
+    })
   });
 
   crossroads.addRoute('/approval_list', function () {
