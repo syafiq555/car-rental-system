@@ -36,19 +36,20 @@
           
         </div>
         <div class="ibox-content">
-          <form method="get">
+          <form method="post" id="addManufactureForm">
             
             <!--Manufactures -->
             <div class="hr-line-dashed"></div>
             <div class="form-group row"><label class="col-sm-2 col-form-label">Manufactures</label>
-              <div class="col-sm-10"><input type="text" class="form-control">
+              <div class="col-sm-10">
+                <input type="text" name="manufacturer_name" class="form-control">
               </div>
             </div>
            
             <div class="hr-line-dashed"></div>
             <div class="form-group row">
               <div class="col-sm-4 col-sm-offset-2">
-                <button class="btn btn-white btn-sm" type="submit">Cancel</button>
+               
                 <button class="btn btn-primary btn-sm" type="submit">Add Manufactures</button>
               </div>
             </div>

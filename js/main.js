@@ -74,6 +74,7 @@ $(function () {
     toggleNavbar(route)
   });
 
+  //Add New Car
   crossroads.addRoute('/manage_car', async function () {
     if (!sessionStorage.token) {
       Swal.fire('Ooupss..', 'You don\'t have permission to view this action, please re-login as admin', 'error')
@@ -127,17 +128,74 @@ $(function () {
     return await res.json()
   }
 
-  crossroads.addRoute('/add_manufacture', function () {
+  //Add Manufacture
+  crossroads.addRoute('/add_manufacture', async function () {
+    if (!sessionStorage.token) {
+      Swal.fire('Ooupss..', 'You don\'t have permission to view this action, please re-login as admin', 'error')
+      setTimeout(() => window.location.href = 'login.html', 2000)
+    }
     var addManufacture = Handlebars.templates['addmanufacture'];
 
     var htmlTemplate = addManufacture();
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+
     const route = 'add_manufacture'
     toggleNavbar(route)
+    const form = $('form#addManufactureForm')
+    form.submit(async e => {
+      e.preventDefault()
+      const createManufactureRes = await submitManufacture(e.target.elements)
+      if (!createManufactureRes.status)
+      return Swal.fire('Ouupss..', createManufactureRes.error, 'error')
+      Swal.fire('Insertion Successful', 'Manufacture successfully inserted in database', 'success')
+      setTimeout(() => window.location.href = 'home.html#add_manufacture', 1000)
+    })
   });
 
+  const submitManufacture = async manufacturer => {
+    const {manufacturer_name} = manufacturer
+    const res = await fetch(`${api_url}/create_manufacturer`, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`,
+      },
+      body: JSON.stringify({
+        manufacturer_name: manufacturer_name.value.trim(),
+      })
+    })
+    return await res.json()
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //Add Model
   crossroads.addRoute('/add_model', function () {
     var addModel = Handlebars.templates['addmodel'];
 
@@ -150,6 +208,7 @@ $(function () {
     toggleNavbar(route)
   });
 
+  //Approval List
   crossroads.addRoute('/approval_list', function () {
     var approvalList = Handlebars.templates['approvalList'];
 
