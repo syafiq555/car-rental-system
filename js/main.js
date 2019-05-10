@@ -287,7 +287,7 @@ $(function () {
     toggleNavbar(route)
   });
 
-  crossroads.addRoute('/all_car_list', async function () {
+  crossroads.addRoute('/all_car_list/:hour:', async function (hour) {
     var allCarList = Handlebars.templates['allCarList'];
     const res = await fetch(`${api_url}/get_all_cars`)
     const cars = await res.json()
