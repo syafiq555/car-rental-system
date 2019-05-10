@@ -74,6 +74,7 @@ $(function () {
     toggleNavbar(route)
   });
 
+  //Add New Car
   crossroads.addRoute('/manage_car', async function () {
     if (!sessionStorage.token) {
       Swal.fire('Ooupss..', 'You don\'t have permission to view this action, please re-login as admin', 'error')
@@ -127,7 +128,12 @@ $(function () {
     return await res.json()
   }
 
+  //Add Manufacture
   crossroads.addRoute('/add_manufacture', async function () {
+    if (!sessionStorage.token) {
+      Swal.fire('Ooupss..', 'You don\'t have permission to view this action, please re-login as admin', 'error')
+      setTimeout(() => window.location.href = 'login.html', 2000)
+    }
     var addManufacture = Handlebars.templates['addmanufacture'];
 
     const manufacturers = await fetchManufacturers()
@@ -139,6 +145,7 @@ $(function () {
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
+
     const route = 'add_manufacture'
     toggleNavbar(route)
     addClassToDatatable('modelTable')
@@ -245,6 +252,7 @@ $(function () {
     })
   });
 
+  //Approval List
   crossroads.addRoute('/approval_list', function () {
     var approvalList = Handlebars.templates['approvalList'];
 
