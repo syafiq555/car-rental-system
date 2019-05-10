@@ -35,8 +35,10 @@
               Year : {{year}} <br>
               Plate : {{plate_number}}
             </div>
-            <div class="m-t text-righ">
-              <a href="#" class="btn btn-xs btn-outline btn-primary">Book <i class="fas fa-arrow-right"></i> </a>
+            <div class="m-t text-right">
+              <button name="bookCarButton" id="car{{id}}" class="btn btn-xs btn-outline btn-primary">
+                Book <i class="fas fa-arrow-right"></i>
+              </button>
             </div>
           </div>
         </div>
@@ -44,3 +46,17 @@
     </div>
     {{/each}}
   </div>
+
+  <script>
+    $('button[name=bookCarButton]').click((e) => {
+      const car_id = e.target.id.substr(3)
+      const url = new URL(window.location.href)
+      const [hour] = url.hash.split('/').slice(-1)
+      if (!(/[0-9]+/.test(hour))) {
+        Swal.fire('Oupss..', 'Choose your booking duration first', 'error')
+        return setTimeout(() => window.location.href = 'home.html#home', 2000)
+      }
+      
+    })
+
+  </script>
