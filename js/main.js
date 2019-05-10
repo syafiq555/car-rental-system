@@ -34,7 +34,7 @@ $(function () {
   // });
 
   const toggleNavbar = route => {
-    if ($(document.body).hasClass('body-small')) {
+    if (window.innerWidth <= 991) {
       const navigation = document.querySelector('ul.nav.navbar-nav.mr-auto')
       const lia = navigation.querySelectorAll('li a')
       lia.forEach(link => {
