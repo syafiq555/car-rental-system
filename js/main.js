@@ -81,15 +81,18 @@ $(function () {
       setTimeout(() => window.location.href = 'login.html', 2000)
     }
     var manageCar = Handlebars.templates['manageCar'];
-    const res = await fetch(`${api_url}/get_all_models`, {
+    const resModels = await fetch(`${api_url}/get_all_models`, {
       headers: {
         'Authorization': `bearer ${sessionStorage.getItem('token')}`
       }
     })
 
-    const models = await res.json()
+    const resCars = await fetch(`${api_url}/get_all_cars`)
+
+    const [models, cars] = await Promise.all([resModels.json(), resCars.json()])
+    console.log(cars, models)
     const context = {
-      models
+      models, cars
     }
 
     var htmlTemplate = manageCar(context);
@@ -98,6 +101,17 @@ $(function () {
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
     const route = 'manage_car'
     toggleNavbar(route)
+    addClassToDatatable('carsTable')
+    const collapsedLink = document.querySelector('div.ibox-tools a.collapse-link')
+    const clickEvent = collapsedLink.addEventListener('click', function () {
+      const parent = $(this).parent().parent().parent()
+      if (!parent.hasClass('collapsed'))
+        parent.addClass('collapsed')
+      else
+        parent.removeClass('collapsed')
+      document.removeEventListener('click', clickEvent)
+    })
+
     const form = $('form#manageCarForm')
     form.submit(async e => {
       e.preventDefault()
