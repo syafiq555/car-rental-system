@@ -3,6 +3,24 @@ function logout() {
   window.location.reload()
 }
 
+async function submitOrder() {
+  const dateFrom = document.querySelector('input[name=dateFrom]')
+  const dateTo = document.querySelector('input[name=dateTo]')
+  const timeFrom = document.querySelector('input[name=timeFrom]')
+  const timeTo = document.querySelector('input[name=timeTo]')
+
+  if (dateFrom && dateTo && timeFrom && timeTo) {
+    const fromJs = new Date(`${dateTo.value} ${timeTo.value}:00`)
+    const to = moment(fromJs, 'DD-MM-YYYY HH:mm:ss')
+    const toJs = new Date(`${dateFrom.value} ${timeFrom.value}:00`)
+    const from = moment(toJs, 'DD-MM-YYYY HH:mm:ss')
+    const hours = calculateHours(to, from)
+    window.location.href = 'home.html#all_car_list/' + hours
+  }
+}
+
+const calculateHours = (to, from) => moment.duration(to.diff(from)).asHours()
+
 $(function () {
   const api_url = 'https://car-rental-system-api.herokuapp.com'
   if (sessionStorage.token) {
