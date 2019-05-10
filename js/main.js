@@ -90,7 +90,6 @@ $(function () {
     const resCars = await fetch(`${api_url}/get_all_cars`)
 
     const [models, cars] = await Promise.all([resModels.json(), resCars.json()])
-    console.log(cars, models)
     const context = {
       models, cars
     }
@@ -168,7 +167,6 @@ $(function () {
       e.preventDefault()
       const { manufacturer_name } = e.target.elements
       const submittedManufacturer = await submitManufacturer(manufacturer_name)
-      console.log(submittedManufacturer)
       if (!submittedManufacturer.status)
         return Swal.fire('Oouupss...', submittedManufacturer.error, 'error')
       Swal.fire('Insertion Successful', 'success')
