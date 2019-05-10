@@ -199,6 +199,11 @@ $(function () {
   }
 
   crossroads.addRoute('/add_model', async function () {
+    if (!sessionStorage.token) {
+      Swal.fire('Ooupss', 'This page is only for admin', 'error')
+      setTimeout(() => window.location.href = 'index.html', 1000)
+    }
+
     var addModel = Handlebars.templates['addmodel'];
 
     const modelRes = await fetch(`${api_url}/get_all_models`, {
@@ -237,7 +242,6 @@ $(function () {
 
     $(form).submit(async e => {
       e.preventDefault()
-      console.log($(form).serialize())
       const res = await fetch(`${api_url}/create_model`, {
         method: 'post',
         headers: {
@@ -245,10 +249,17 @@ $(function () {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        body: $(form).serialize()
+        body: JSON.stringify({
+          model_name: e.target.elements.model_name.value.trim().toLowerCase(),
+          manufacturer_id: e.target.elements.manufacturer_id.value
+        })
       })
       const submitted = await res.json()
-      console.log(submitted)
+      if (submitted.error !== 'none')
+        return Swal.fire('Ooupss', submitted.error, 'error')
+      Swal.fire('Insertion successful!', `${e.target.elements.model_name.value.trim().toLowerCase()} already been inserted into the datase`, 'success')
+      if (submitted)
+        setTimeout(() => window.location.reload(), 1000)
     })
   });
 
