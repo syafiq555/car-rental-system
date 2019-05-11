@@ -11,6 +11,10 @@ cp .env.sample .env
 ```
 3. Import car-rental-system.sql 
 4. Change the newly created .env file according to your local database configuration
+5. cd into the foldder then run npm install
+```
+npm install
+```
 
 ## Things to remind before use
 1. Create your branch first before edit (feature branch)
