@@ -35,7 +35,6 @@ $(document).ready(() => {
 
     sessionStorage.role = res.role
     sessionStorage.token = res.token
-    sessionStorage.user_id = res.id
     Swal.fire('Login Successful', `Welcome back, ${username.value}`, 'success')
     setTimeout(() => window.location.href = "home.html#home", 2000)
 
