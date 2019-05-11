@@ -48,15 +48,53 @@
   </div>
 
   <script>
-    $('button[name=bookCarButton]').click((e) => {
+    const api_url = 'https://car-rental-system-api.herokuapp.com'
+    $('button[name=bookCarButton]').click(async (e) => {
+      if (!sessionStorage.token) return window.location.href = 'login.html'
       const car_id = e.target.id.substr(3)
       const url = new URL(window.location.href)
-      const [hour] = url.hash.split('/').slice(-1)
-      if (!(/[0-9]+/.test(hour))) {
+      const urlArr = url.hash.split('/')
+      if (urlArr.length != 4) {
         Swal.fire('Oupss..', 'Choose your booking duration first', 'error')
         return setTimeout(() => window.location.href = 'home.html#home', 2000)
       }
-      
+      const [hour, from_20, to_20] = urlArr.slice(-3)
+      if (hour < 1) {
+        Swal.fire('Oupss..', 'Duration of hour cannot be less than 1', 'error')
+        return setTimeout(() => window.location.href = 'home.html#home', 2000)
+      }
+      const from = from_20.replace('%20', ' ')
+      const to = to_20.replace('%20', ' ')
+      const [date_from, time_from] = from.split(' ')
+      const [date_to, time_to] = to.split(' ')
+      const order = {
+        car_id,
+        hour,
+        date_from,
+        date_to,
+        time_from,
+        time_to,
+      }
+      const submittedOrder = await sendOrderToApi(order)
+      if (submittedOrder.error !== 'none')
+        return Swal.fire('Ouupss..', submittedOrder.error, 'error')
+      Swal.fire('Order Successful', '', 'success')
+      setTimeout(() => window.location.href = 'home.html#customer_booking_status', 1000)
+
     })
+
+    const sendOrderToApi = async order => {
+      const resOrder = await fetch(`${api_url}/create_order`, {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `bearer ${sessionStorage.getItem('token')}`
+        },
+        body: JSON.stringify(order)
+      })
+      const submittedOrder = await resOrder.json()
+      return submittedOrder
+    };
 
   </script>

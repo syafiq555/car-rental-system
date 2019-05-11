@@ -11,11 +11,11 @@ async function submitOrder() {
 
   if (dateFrom && dateTo && timeFrom && timeTo) {
     const fromJs = new Date(`${dateTo.value} ${timeTo.value}:00`)
-    const to = moment(fromJs, 'DD-MM-YYYY HH:mm:ss')
+    const to = moment(fromJs, 'YYYY-MM-DD HH:mm:ss')
     const toJs = new Date(`${dateFrom.value} ${timeFrom.value}:00`)
-    const from = moment(toJs, 'DD-MM-YYYY HH:mm:ss')
+    const from = moment(toJs, 'YYYY-MM-DD HH:mm:ss')
     const hours = calculateHours(to, from)
-    window.location.href = 'home.html#all_car_list/' + hours
+    window.location.href = `home.html#all_car_list/${hours}/${from.format('YYYY-MM-DD HH:mm:ss')}/${to.format('YYYY-MM-DD HH:mm:ss')}`
   }
 }
 
