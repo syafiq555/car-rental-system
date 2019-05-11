@@ -345,10 +345,17 @@ $(function () {
     toggleNavbar(route)
   });
 
-  crossroads.addRoute('/customer_booking_status', function () {
+  crossroads.addRoute('/customer_booking_status', async function () {
     var cust_booking_status = Handlebars.templates['customerBookingStatus'];
 
-    var htmlTemplate = cust_booking_status();
+    const userOrderRes = await fetch(`${api_url}/get_user_order`, {
+      headers: {
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`
+      }
+    })
+
+    const userOrder = await userOrderRes.json()
+    var htmlTemplate = cust_booking_status({ order: userOrder });
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
