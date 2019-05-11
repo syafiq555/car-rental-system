@@ -39,6 +39,30 @@ $(function () {
     crossroads.parse(newHash);
   }
 
+  Handlebars.registerHelper('displayApproval', (approved) => {
+    if (approved === 0)
+      return `<div class="widget yellow-bg p-lg text-center">
+      <div class="m-b-md">
+        <i class="fas fa-undo fa-4x"></i>
+        <h1 class="font-bold m-xs">Pending</h1>
+      </div>
+    </div>`
+    else if (approved === 1)
+      return ` <div class="widget text-white p-lg text-center" style="background:green">
+    <div class="m-b-md">
+      <i class="fas fa-check fa-4x"></i>
+      <h1 class="font-bold m-xs">Approve</h1>
+    </div>
+  </div>`
+    else
+      return `<div class="widget red-bg p-lg text-center">
+    <div class="m-b-md">
+      <i class="fas fa-times fa-4x"></i>
+      <h1 class="font-bold m-xs">Reject</h1>
+    </div>
+  </div>`
+  })
+
   // Handlebars.registerHelper("fullname", function (fname, lname) {
   //   return fname + " " + lname;
   // });
