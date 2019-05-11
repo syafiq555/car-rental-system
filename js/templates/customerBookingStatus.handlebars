@@ -12,6 +12,7 @@
   </div>
 </div>
 <div class="wrapper wrapper-content animated fadeInRight" style="padding-top:30px;padding-bottom:100px">
+  {{#if order}}
   <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-lg-2">
@@ -20,48 +21,60 @@
           <h1 class="font-bold m-xs">Status</h1>
         </div>
       </div>
-      <div class="widget yellow-bg p-lg text-center">
-        <div class="m-b-md">
-          <i class="fas fa-undo fa-4x"></i>
-          <h1 class="font-bold m-xs">Pending</h1>
-        </div>
-      </div>
-      <div class="widget text-white p-lg text-center" style="background:green">
-        <div class="m-b-md">
-          <i class="fas fa-check fa-4x"></i>
-          <h1 class="font-bold m-xs">Approve</h1>
-        </div>
-      </div>
-      <div class="widget red-bg p-lg text-center">
-        <div class="m-b-md">
-          <i class="fas fa-times fa-4x"></i>
-          <h1 class="font-bold m-xs">Reject</h1>
-        </div>
-      </div>
+      {{#displayApproval order.approved}}
+      {{/displayApproval}}
     </div>
     <div class="col-lg-4">
       <div class="widget-head-color-box navy-bg p-lg text-center">
         <div class="m-b-md">
-          <h2 class="font-bold no-margins">
-            Nissan GTR
+          <h2 class="font-bold no-margins text-capitalize">
+            {{order.manufacturer_name}} {{order.model_name}}
           </h2>
-          <small>Sport</small>
         </div>
         <img src="img/bg.jpg" class="rounded-circle circle-border m-b-md" alt="profile" style="height:100%;width:100%">
         <div>
-          <span>BMW M5</span> |
-          <span>RM200 per Hour</span> |
-          <span>2018</span>
+          <span class="text-capitalize">{{order.manufacturer_name}} {{order.model_name}}</span> |
+          <span>RM {{order.price_per_hour}} per Hour</span> |
+          <span class="text-capitalize">{{order.year}}</span>
         </div>
       </div>
-      <div class="widget-text-box">
-        
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        <div class="text-right">
-          
-          <a href="#" class="btn btn-xs btn-danger"> Cancel</a>
+      <div class="ibox mt-3">
+        <div class="ibox-title">
+          <h5>Car Details</h5>
+        </div>
+        <div class="ibox-content no-padding" style="">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="badge badge-primary">Plate Number</span>
+              {{order.plate_number}}
+            </li>
+            <li class="list-group-item ">
+              <span class="badge badge-info">Total Price</span>
+              {{order.total_price}}
+            </li>
+            <li class="list-group-item">
+              <span class="badge badge-danger">From</span>
+              {{order.date_from}} {{order.time_from}}
+            </li>
+            <li class="list-group-item">
+              <span class="badge badge-success">Until</span>
+              {{order.date_to}} {{order.time_to}}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+  {{else}}
+  <div class="card">
+    <div class="card-body">
+      <p class="card-text text-capitalize text-black">Currently no order</p>
+    </div>
+  </div>
+  {{/if}}
 </div>
+
+<script>
+  if (!sessionStorage.token)
+    window.location.href = 'login.html'
+</script>
