@@ -39,6 +39,37 @@ $(function () {
     crossroads.parse(newHash);
   }
 
+  Handlebars.registerHelper('canCancel', (approved) => {
+    if (approved === 0)
+      return `<div class="col-lg-2">
+      <div id="cancelButton" class="widget style1 red-bg">
+        <div class="row vertical-align">
+          <div class="col-3">
+            <i class="fa fa-trash fa-3x"></i>
+          </div>
+          <div class="col-9 text-right d-flex flex-row justify-content-end align-items-center">
+            <h3 class="font-bold">Cancel Order</h3>
+          </div>
+        </div>
+      </div>
+    </div>`
+    else if (approved === 1)
+      return ''
+    else
+      return `<div class="col-lg-2">
+      <div id="cancelButton" class="widget style1 red-bg">
+        <div class="row vertical-align">
+          <div class="col-3">
+            <i class="fa fa-trash fa-3x"></i>
+          </div>
+          <div class="col-9 text-right d-flex flex-row justify-content-end align-items-center">
+            <h3 class="font-bold">Cancel Order</h3>
+          </div>
+        </div>
+      </div>
+    </div>`
+  })
+
   Handlebars.registerHelper('displayApproval', (approved) => {
     if (approved === 0)
       return `<div class="widget yellow-bg p-lg text-center">

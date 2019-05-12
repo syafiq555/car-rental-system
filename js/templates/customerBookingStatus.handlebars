@@ -1,3 +1,8 @@
+<style>
+  #cancelButton {
+    cursor: pointer;
+  }
+</style>
 <div class="row wrapper border-bottom white-bg page-heading">
   <div class="col-lg-10">
     <h2>Booking Status</h2>
@@ -50,7 +55,7 @@
             </li>
             <li class="list-group-item ">
               <span class="badge badge-info">Total Price</span>
-              {{order.total_price}}
+              RM {{order.total_price}}
             </li>
             <li class="list-group-item">
               <span class="badge badge-danger">From</span>
@@ -64,6 +69,8 @@
         </div>
       </div>
     </div>
+    {{#canCancel order.approved}}
+    {{/canCancel}}
   </div>
   {{else}}
   <div class="card">
@@ -77,4 +84,19 @@
 <script>
   if (!sessionStorage.token)
     window.location.href = 'login.html'
+  $('#cancelButton').click(async () => {
+    $('#cancelButton').addClass('animated hinge')
+    const cancelRes = await fetch(`https://car-rental-system-api.herokuapp.com/cancel_order/{{ order.id }}`, {
+      method: 'delete',
+      headers: {
+        'Authorization': 'bearer ' + sessionStorage.getItem('token')
+      }
+    })
+    const cancel = await cancelRes.json()
+    if (!cancel.deletestatus)
+      Swal.fire('Ouupss..', cancel.error, 'error')
+    else
+      Swal.fire('Cancellation Successful', '', 'success')
+    setTimeout(() => window.location.reload(), 1000)
+  });
 </script>
