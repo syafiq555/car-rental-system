@@ -94,17 +94,15 @@ $(function () {
   </div>`
   })
 
-  // Handlebars.registerHelper("fullname", function (fname, lname) {
-  //   return fname + " " + lname;
-  // });
-
-  // Handlebars.registerHelper("displaystatus", function (status) {
-  //   var thestatus = parseInt(status);
-  //   if (thestatus === 0)
-  //     return "<span style='color: red; font-weight: bold'>not active</span>";
-  //   else if (thestatus === 1)
-  //     return "<span style='color: green; font-weight: bold'>active</span>";
-  // });
+  Handlebars.registerHelper('adminCanApprove', (approved, order_id, user_id) => {
+    if (approved === 0)
+      return `<button onclick="decide(${order_id}, ${user_id}, 1)"><i class="fa fa-check text-navy"></i></button>&nbsp&nbsp&nbsp<button onclick="decide(${order_id}, ${user_id}, 2)"><i
+      class="fas fa-times" style="color:red"></i></button>`
+    else if (approved === 1)
+      return `Approved`
+    else
+      return `Rejected`
+  })
 
   const toggleNavbar = route => {
     if (window.innerWidth <= 991) {
@@ -349,15 +347,28 @@ $(function () {
   });
 
   //Approval List
-  crossroads.addRoute('/approval_list', function () {
+  crossroads.addRoute('/approval_list', async function () {
+    const res = await fetch(`${api_url}/get_all_orders`, {
+      headers: {
+        'Authorization': `bearer ${sessionStorage.getItem('token')}`
+      }
+    })
+
+    const orders = await res.json()
+    if (orders.error) {
+      Swal.fire('Ooupss..', 'Something went wrong please try again', 'error')
+      return setTimeout(() => window.location.href = 'index.html', 1500)
+    }
+
     var approvalList = Handlebars.templates['approvalList'];
 
-    var htmlTemplate = approvalList();
+    var htmlTemplate = approvalList({ orders: orders.orders });
 
     $("div#contents").empty();
     $("div#contents").html(htmlTemplate).hide().fadeIn(1000);
     const route = 'approval_list'
     toggleNavbar(route)
+    addClassToDatatable('approvalList')
   });
 
   crossroads.addRoute('/all_car_list/:hour:/:from:/:to:', async function (hour, from, to) {
