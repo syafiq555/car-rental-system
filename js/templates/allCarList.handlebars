@@ -48,7 +48,6 @@
   </div>
 
   <script>
-    const api_url = 'https://car-rental-system-api.herokuapp.com'
     $('button[name=bookCarButton]').click(async (e) => {
       if (!sessionStorage.token) return window.location.href = 'login.html'
       const car_id = e.target.id.substr(3)
@@ -83,8 +82,8 @@
 
     })
 
-    const sendOrderToApi = async order => {
-      const resOrder = await fetch(`${api_url}/create_order`, {
+    async function sendOrderToApi(order) {
+      const resOrder = await fetch(`https://car-rental-system-api.herokuapp.com/create_order`, {
         method: 'post',
         headers: {
           'Accept': 'application/json',
